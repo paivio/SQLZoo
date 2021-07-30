@@ -16,16 +16,16 @@ WHERE continent = 'Europe' AND gdp / population >
 -- #3
 SELECT name, continent
 FROM world
-WHERE continent IN (
-	SELECT continent
+WHERE continent IN 
+	(SELECT continent
 	FROM world
 	WHERE name IN ('Argentina', 'Australia'));
 
 -- #4
 SELECT name, population
 FROM world
-WHERE population > (
-	SELECT population
+WHERE population > 
+	(SELECT population
 	FROM world
 	WHERE name = 'Canada') 
 	AND population < (
@@ -34,8 +34,8 @@ WHERE population > (
 	WHERE name = 'Poland');
 
 -- #5
-SELECT name, CONCAT(CAST(ROUND(100 * population / (
-	SELECT population
+SELECT name, CONCAT(CAST(ROUND(100 * population / 
+	(SELECT population
 	FROM world
 	WHERE name = 'Germany'), 0) AS INT), '%') AS percentage
 FROM world
@@ -44,8 +44,8 @@ WHERE continent = 'Europe';
 -- #6
 SELECT name
 FROM world
-	WHERE gdp > ALL (
-	SELECT gdp
+	WHERE gdp > ALL 
+	(SELECT gdp
 	FROM world WHERE gdp > 0 AND continent = 'Europe');
 
 -- #7
