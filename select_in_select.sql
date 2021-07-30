@@ -57,7 +57,13 @@ WHERE area >= ALL
 	WHERE y.continent=x.continent AND area > 0);
 
 -- #8
-
+SELECT continent, name
+FROM world AS x
+WHERE name = 
+	(SELECT TOP 1 name 
+	FROM world AS y
+	WHERE x.continent = y.continent
+	ORDER BY name);
 
 -- #9
 
